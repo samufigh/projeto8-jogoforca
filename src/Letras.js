@@ -8,6 +8,7 @@ export default function Letras(props) {
             <div className="alfabeto ">
                 {alfabeto.map((letra, indice) => (
                     <button
+                        data-test="letter"
                         className={(props.disabled || props.letrasClicadas.includes(letra)) ? "desabilitada" : "habilitada"}
                         key={letra}
                         onClick={() => props.selecionarLetra(letra, indice)}

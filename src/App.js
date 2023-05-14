@@ -56,7 +56,6 @@ export default function App() {
       }
     }
     if (erros < 6 && novaPalavra.join("") === caracteresPalavra.join("")) {
-      alert("ganhou");
       setPalavra(caracteresPalavra);
       setDesabilitado(true);
       setFim("resposta-certa");

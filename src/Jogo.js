@@ -11,12 +11,16 @@ export default function Jogo( props ) {
 
     return (
         <div className="jogo">
-            <img src={imagens[props.erros]}></img>
+            <img 
+            data-test="game-image"
+            src={imagens[props.erros]}></img>
             <div className="palavra">
                 <button
+                data-test="choose-word"
                 onClick={props.escolherPalavra}
                 >Escolher Palavra</button>
                 <span
+                data-test="word"
                 className={(props.fim)} 
                 >{props.palavra}</span>
             </div>
