@@ -8,7 +8,7 @@ export default function Jogo( props ) {
                 <button
                 onClick={props.escolherPalavra}
                 >Escolher Palavra</button>
-                <span>Palavra</span>
+                <span>{props.palavra}</span>
             </div>
         </div>
     );
