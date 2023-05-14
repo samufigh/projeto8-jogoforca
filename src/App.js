@@ -43,6 +43,12 @@ export default function App() {
 
       
       console.log(palavra);
+    } else {
+      let cont = erros+1;
+      setErros(cont);
+      if (cont === 6){
+        alert("perdeu");
+      }
     }
     
   }
@@ -52,6 +58,7 @@ export default function App() {
       <Jogo 
         escolherPalavra={escolherPalavra}
         palavra={palavra}
+        erros={erros}
       />
 
       <Letras
