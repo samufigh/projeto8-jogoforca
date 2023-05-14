@@ -16,7 +16,9 @@ export default function Jogo( props ) {
                 <button
                 onClick={props.escolherPalavra}
                 >Escolher Palavra</button>
-                <span>{props.palavra}</span>
+                <span
+                className={(props.fim)} 
+                >{props.palavra}</span>
             </div>
         </div>
     );

@@ -10,9 +10,12 @@ export default function App() {
   const [palavra, setPalavra] = useState('');
   const [caracteresPalavra, setCaracteresPalavra] = useState([]);
   const [erros, setErros] = useState(0);
+  const [fim, setFim] = useState('');
 
-  function escolherPalavra(){
+  function escolherPalavra() {
+    setFim('');
     setDesabilitado(false);
+    setLetrasClicadas([]);
     //conta os erros
     setErros(0);
 
@@ -29,36 +32,44 @@ export default function App() {
     )))
   }
 
-  function selecionarLetra(letra, i){
+  function selecionarLetra(letra, i) {
     setLetrasClicadas([...letrasClicadas, letra])
     console.log(letrasClicadas);
 
     let novaPalavra = [...palavra];
-    if(caracteresPalavra.includes(letra)){
+    if (caracteresPalavra.includes(letra)) {
       caracteresPalavra.forEach((char, indice) => {
-        if(char === letra ){
-          palavra[indice]=caracteresPalavra[indice];
+        if (char === letra) {
+          palavra[indice] = caracteresPalavra[indice];
         }
       });
 
-      
+
       console.log(palavra);
     } else {
-      let cont = erros+1;
+      let cont = erros + 1;
       setErros(cont);
-      if (cont === 6){
-        alert("perdeu");
+      if (cont === 6) {
+        setPalavra(caracteresPalavra);
+        setDesabilitado(true);
+        setFim("resposta-errada");
       }
     }
-    
+    if (erros < 6 && novaPalavra.join("") === caracteresPalavra.join("")) {
+      alert("ganhou");
+      setPalavra(caracteresPalavra);
+      setDesabilitado(true);
+      setFim("resposta-certa");
+    }
   }
 
   return (
     <div className="App">
-      <Jogo 
+      <Jogo
         escolherPalavra={escolherPalavra}
         palavra={palavra}
         erros={erros}
+        fim={fim}
       />
 
       <Letras
